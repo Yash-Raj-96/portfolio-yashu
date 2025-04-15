@@ -3,20 +3,34 @@
 import { personalData } from "@/utils/data/personal-data";
 
 async function getBlogs() {
-  const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`)
+  const res = await fetch(`https://dev.to/api/articles?username=${personalData.devUsername}`);
 
   if (!res.ok) {
-    throw new Error('Failed to fetch data')
+    throw new Error('Failed to fetch data');
   }
 
   const data = await res.json();
   return data;
 };
 
-async function page() {
+async function Page() {
   const blogs = await getBlogs();
 
-  
+  return (
+    <div>
+      <h1>Blogs</h1>
+      <ul>
+        {blogs.map((blog) => (
+          <li key={blog.id}>
+            <a href={blog.url} target="_blank" rel="noopener noreferrer">
+              {blog.title}
+            </a>
+            <p>{blog.description}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 };
 
-export default page;
+export default Page;
