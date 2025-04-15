@@ -1,4 +1,4 @@
-"use client"; // Ensure this component is client-side only
+"use client";
 
 import { useEffect, useState } from "react";
 import { FaArrowUp } from "react-icons/fa6";
@@ -18,11 +18,7 @@ const ScrollToTop = () => {
         setBtnCls(DEFAULT_BTN_CLS + " hidden");
       }
     };
-    
-    // Listen to scroll event on mount
     window.addEventListener("scroll", handleScroll, { passive: true });
-
-    // Cleanup event listener on component unmount
     return () => {
       window.removeEventListener("scroll", handleScroll, { passive: true });
     };
