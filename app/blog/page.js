@@ -18,7 +18,7 @@ async function Page() {
 
   return (
     <div>
-      <h1>Blogs</h1>
+      <h2>Recent Blogs</h2>
       <ul>
         {blogs.map((blog) => (
           <li key={blog.id}>
